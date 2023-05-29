@@ -13,7 +13,7 @@ export const getAll = async (req, res) => {
     transmission = transmission.map((item) => item.value);
 
     const products = await Product.find({
-      age: { $in: req.query.age || ['old', 'new'] },
+      age: { $in: req.query.age || [0, 1] },
       drive: { $in: req.query.drive || drives },
       box: { $in: req.query.box || transmission },
       color: { $in: req.query.color || colors },
@@ -22,6 +22,7 @@ export const getAll = async (req, res) => {
       mileage: { $gte: req.query.mileage || 0 },
       power: { $gte: req.query.power || 0 },
     })
+      .sort({ price: -1 })
       .populate('model')
       .exec();
 

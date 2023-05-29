@@ -7,9 +7,9 @@ export const getAllCategories = async (req, res) => {
   try {
     let drives = await Drive.find();
     let colors = await Color.find();
-    let transmission = await Transmission.find();
+    let box = await Transmission.find();
     let model = await Model.find();
-    res.status(200).json({ drives, colors, transmission, model });
+    res.status(200).json({ drives, colors, box, model });
   } catch (err) {
     console.log(err);
     res.status(500).json({
