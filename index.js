@@ -5,6 +5,10 @@ import mongoose from 'mongoose';
 import * as ProductController from './controllers/ProductController.js';
 import * as ModelController from './controllers/ModelController.js';
 import * as OfferController from './controllers/OfferController.js';
+import * as UserController from './controllers/UserController.js';
+
+import { registerValidation } from './validations.js';
+import checkAuth from './middleware/checkAuth.js';
 
 const app = express();
 app.use(express.json());
@@ -26,7 +30,7 @@ app.listen('4000', (err) => {
   console.log('Server started');
 });
 
-//queryes
+//query
 
 app.get('/products', ProductController.getAll);
 
@@ -35,3 +39,9 @@ app.get('/categories', ModelController.getAllCategories);
 app.get('/models', ModelController.getModels);
 
 app.get('/offer', OfferController.getAll);
+
+app.get('/user', checkAuth, UserController.getUser);
+
+app.post('/user/register', registerValidation, UserController.register);
+
+app.post('/user/login', UserController.login);
