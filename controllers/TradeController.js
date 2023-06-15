@@ -12,7 +12,7 @@ export const createTrade = async (req, res) => {
       user: req.userId,
     });
 
-    const trade = await doc.save();
+    await doc.save();
 
     res.status(200).json({
       msg: 'Заявка на трейд-ин оформлена, скоро с вами свяжется менеджер',
