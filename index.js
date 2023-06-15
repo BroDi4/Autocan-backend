@@ -43,6 +43,8 @@ app.get('/offer', OfferController.getAll);
 
 app.get('/user', checkAuth, UserController.getUser);
 
+app.patch('/user', checkAuth, UserController.updateUser);
+
 app.post('/user/register', registerValidation, UserController.register);
 
 app.post('/user/login', UserController.login);

@@ -116,3 +116,26 @@ export const getUser = async (req, res) => {
     });
   }
 };
+
+export const updateUser = async (req, res) => {
+  try {
+    await User.updateOne(
+      { _id: req.userId },
+      {
+        name: req.body.name,
+        lastname: req.body.lastname,
+        surname: req.body.surname,
+        email: req.body.email,
+        city: req.body.city,
+      },
+    );
+    res.status(200).json({
+      msg: 'Пользователь обновлен',
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      msg: 'Ошибка обновления пользователя',
+    });
+  }
+};
