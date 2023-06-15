@@ -6,6 +6,7 @@ import * as ProductController from './controllers/ProductController.js';
 import * as ModelController from './controllers/ModelController.js';
 import * as OfferController from './controllers/OfferController.js';
 import * as UserController from './controllers/UserController.js';
+import * as TradeController from './controllers/TradeController.js';
 
 import { registerValidation } from './validations.js';
 import checkAuth from './middleware/checkAuth.js';
@@ -45,3 +46,5 @@ app.get('/user', checkAuth, UserController.getUser);
 app.post('/user/register', registerValidation, UserController.register);
 
 app.post('/user/login', UserController.login);
+
+app.post('/trade', checkAuth, TradeController.createTrade);
