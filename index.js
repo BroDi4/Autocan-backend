@@ -18,14 +18,12 @@ app.use(cors());
 
 //connect to DB
 mongoose
-  .connect(
-    'mongodb+srv://brod:12BroD123@cluster.8z0udat.mongodb.net/autocan?retryWrites=true&w=majority',
-  )
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('Database connect succesuful'))
   .catch((err) => console.log(err));
 
 //Server init
-app.listen('4000', (err) => {
+app.listen(process.env.MONGODB_URI || '4000', (err) => {
   if (err) {
     console.log(err);
   }
