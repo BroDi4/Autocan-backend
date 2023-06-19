@@ -14,7 +14,7 @@ import checkAuth from './middleware/checkAuth.js';
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: ['http://localhost:3000/', 'https://autocan.onrender.com/'] }));
 
 //connect to DB
 mongoose
