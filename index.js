@@ -23,7 +23,7 @@ mongoose
   .catch((err) => console.log(err));
 
 //Server init
-app.listen(process.env.MONGODB_URI || '4000', (err) => {
+app.listen(process.env.PORT || '4000', (err) => {
   if (err) {
     console.log(err);
   }
