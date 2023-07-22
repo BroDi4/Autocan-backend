@@ -18,12 +18,15 @@ app.use(cors({ origin: ['http://localhost:3000', 'https://autocan.onrender.com']
 
 //connect to DB
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(
+    process.env.MONGODB_URI ||
+      'mongodb+srv://brod:12BroD123@cluster.8z0udat.mongodb.net/autocan?retryWrites=true&w=majority',
+  )
   .then(() => console.log('Database connect succesuful'))
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));
 
 //Server init
-app.listen(process.env.PORT || '4000', (err) => {
+app.listen(process.env.PORT || '4000', err => {
   if (err) {
     console.log(err);
   }
